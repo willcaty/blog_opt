@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{{ article.title }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'blog/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/font-awesome/css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/style.css' %}" id="theme-styles">
+
+
+</head>
+<body>
+<header>
+    <div class="widewrapper subheader">
+        <div class="container">
+            <div class="clean-breadcrumb">
+                <a href="/index/">Blog</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="widewrapper main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 blog-main">
+                <aside class="create-comment" id="create-comment">
+                    <hr>
+
+                    <h2><i class="fa fa-pencil"></i> Add Blog</h2>
+
+                    <form action="/add_article/" method="post" accept-charset="utf-8">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" name="title" id="comment-name" placeholder="Title"
+                                       class="form-control input-lg">
+                            </div>
+
+                        </div>
+                        <textarea rows="10" name="body" id="comment-body" placeholder="Blog content"
+                                  class="form-control input-lg"></textarea>
+                        <div>
+                            <input type="text" name="abstract" class="form-control input-lg" placeholder="abstract">
+                        </div>
+                        <div>
+                            <select name="category" id="category" style="margin-top: 15px">
+                                {% for foo in category %}
+                                    <option value={{ foo.id }}>{{ foo.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="buttons clearfix">
+                            <button type="submit" class="btn btn-xlarge btn-clean-one">Submit</button>
+                        </div>
+                    </form>
+                </aside>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="{% static 'blog/js/jquery.min.js' %}"></script>
+<script src="{% static 'blog/js/bootstrap.js' %}"></script>
+<script src="{% static 'blog/js/modernizr.js' %}"></script>
+
+
+</body>
+</html>
