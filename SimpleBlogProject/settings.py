@@ -24,19 +24,18 @@ SECRET_KEY = '_!)(5w-q!@or-x86505n)v55%xpre2b%+n$8x6g8@r&=kmjq36'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*',]
+ALLOWED_HOSTS = ['*', ]
 
 # Application definition
 INTERNAL_IPS = ('127.0.0.1')
 INSTALLED_APPS = [
+    'blog.apps.BlogConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog.apps.BlogConfig',
-    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -54,22 +53,10 @@ ROOT_URLCONF = 'SimpleBlogProject.urls'
 
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': 'D:\Workspace\cache',
-        'TIMEOUT': 600,
-        'OPTIONS': {
-            'MAX_ENTRIES': 1000
-        }
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflaske',
     }
 }
-# CACHES = {
-#     'default': {
-#         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-#         'LOCATION': 'unique-snowflake'
-#     }
-# }
-
-
 
 TEMPLATES = [
     {
@@ -105,8 +92,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'blog',
         'USER': 'root',
-        'PASSWORD': 'centos121',
-        'HOST': 'gloryroad2017',
+        'PASSWORD': '123456',
+        'HOST': '117.50.30.61',
         'PORT': '3306',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
